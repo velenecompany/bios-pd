@@ -3,25 +3,32 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --cream: #F7F3EC;
+  --cream-dark: #EDE6D8;
+  --bark: #3D2B1A;
+  --bark-mid: #5C3F28;
+  --moss: #4A5E3A;
+  --moss-light: #6B8256;
+  --gold: #B8872A;
+  --gold-light: #D4A853;
+  --stone: #8C8275;
+  --stone-light: #C4BEB4;
+  --white: #FDFAF6;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+  background: var(--cream);
+  color: var(--bark);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
 }
