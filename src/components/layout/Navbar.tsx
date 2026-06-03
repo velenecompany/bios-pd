@@ -17,14 +17,13 @@ export default function Navbar() {
       }}>
         <Link href="/" style={{
           fontFamily: 'var(--font-serif)',
-          fontSize: '1.3rem', fontWeight: 500,
-          letterSpacing: '0.12em', color: 'var(--bark)',
+          fontSize: '1.2rem', fontWeight: 500,
+          letterSpacing: '0.08em', color: 'var(--bark)',
           textDecoration: 'none',
         }}>
-          BIOS <span style={{ color: 'var(--moss)' }}>·</span> naturales
+          BIOS <span style={{ color: 'var(--moss)' }}>·</span> Productos Naturales
         </Link>
 
-        {/* Desktop links */}
         <ul style={{ display: 'flex', gap: '2.5rem', listStyle: 'none' }} className="desktop-nav">
           {[
             { label: 'Productos', href: '#productos' },
@@ -56,7 +55,6 @@ export default function Navbar() {
           </li>
         </ul>
 
-        {/* Mobile hamburger */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="mobile-menu-btn"
@@ -74,7 +72,6 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile menu */}
       {menuOpen && (
         <div className="mobile-menu" style={{
           position: 'fixed', top: '64px', left: 0, right: 0, zIndex: 99,

@@ -25,7 +25,7 @@ export default function Footer() {
       <footer style={{ background: 'var(--bark)', padding: 'clamp(3rem, 6vw, 4rem) clamp(1.5rem, 5vw, 5rem) clamp(1.5rem, 4vw, 2.5rem)', color: 'var(--cream-dark)' }}>
         <div className="footer-grid">
           <div>
-            <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.4rem', fontWeight: 300, color: 'var(--cream)', marginBottom: '0.8rem' }}>BIOS naturales</p>
+            <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.4rem', fontWeight: 300, color: 'var(--cream)', marginBottom: '0.8rem' }}>BIOS Productos Naturales</p>
             <p style={{ fontSize: '0.82rem', fontWeight: 300, lineHeight: 1.8, color: 'var(--stone-light)', maxWidth: '240px' }}>Productos 100% naturales elaborados con amor y compromiso por una vida más sana.</p>
           </div>
           {[
