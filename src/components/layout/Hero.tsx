@@ -16,12 +16,12 @@ export default function Hero() {
           overflow: hidden;
           min-height: 400px;
         }
-        .hero-badge { position: absolute; bottom: 3rem; right: 3rem; z-index: 2; }
-        .hero-tag { position: absolute; top: 3rem; left: 2rem; z-index: 2; }
+        .hero-badge { position: absolute; bottom: 3rem; left: 2rem; z-index: 2; }
+        .hero-tag { position: absolute; top: 2rem; left: 2rem; z-index: 2; }
         @media (max-width: 768px) {
           .hero-grid { grid-template-columns: 1fr; min-height: auto; }
-          .hero-right { min-height: 380px; }
-          .hero-badge { bottom: 1.5rem; right: 1.5rem; }
+          .hero-right { min-height: 420px; }
+          .hero-badge { bottom: 1.5rem; left: 1.5rem; }
           .hero-tag { top: 1.5rem; left: 1.5rem; }
         }
       `}</style>
@@ -83,7 +83,7 @@ export default function Hero() {
             src="/images/vinagre-hero.jpg"
             alt="Vinagre de Sidra de Manzana BIOS Productos Naturales"
             fill
-            style={{ objectFit: 'cover', objectPosition: 'center top' }}
+            style={{ objectFit: 'cover', objectPosition: '30% 80%' }}
             priority
           />
 
@@ -99,11 +99,12 @@ export default function Hero() {
           </div>
 
           <div className="hero-badge" style={{
-            background: 'var(--bark)', color: 'var(--cream)',
+            background: 'rgba(61,43,26,0.85)', color: 'var(--cream)',
             width: '80px', height: '80px', borderRadius: '50%',
             display: 'flex', flexDirection: 'column',
             alignItems: 'center', justifyContent: 'center', textAlign: 'center',
             fontFamily: 'var(--font-serif)',
+            backdropFilter: 'blur(4px)',
           }}>
             <span style={{ fontSize: '1.4rem', fontWeight: 300, lineHeight: 1 }}>100</span>
             <span style={{ fontSize: '0.5rem', letterSpacing: '0.1em', textTransform: 'uppercase', marginTop: '4px', lineHeight: 1.3 }}>%<br />natural</span>
