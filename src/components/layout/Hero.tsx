@@ -83,7 +83,7 @@ export default function Hero() {
             src="/images/vinagre-hero.jpg"
             alt="Vinagre de Sidra de Manzana BIOS Productos Naturales"
             fill
-            style={{ objectFit: 'cover', objectPosition: '30% 80%' }}
+            style={{ objectFit: 'cover', objectPosition: 'center 20%' }}
             priority
           />
 
