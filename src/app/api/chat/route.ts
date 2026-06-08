@@ -26,7 +26,7 @@ ENVÍOS:
 - A toda la República Mexicana
 - Costo según código postal (se cotiza)
 - Paqueterías: Tres Guerras, Julián de Obregón, Kora Express
-- Tiempo promedio: 3 días hábiles
+- Tiempo de entrega: 3 a 5 días hábiles
 
 PAGOS:
 - Transferencia bancaria
