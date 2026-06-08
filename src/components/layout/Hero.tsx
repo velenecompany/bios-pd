@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 export default function Hero() {
   return (
     <>
@@ -11,17 +13,14 @@ export default function Hero() {
         .hero-right {
           position: relative;
           background: var(--cream-dark);
-          display: flex;
-          align-items: center;
-          justify-content: center;
           overflow: hidden;
           min-height: 400px;
         }
-        .hero-badge { position: absolute; bottom: 3rem; right: 3rem; }
-        .hero-tag { position: absolute; top: 3rem; left: 2rem; }
+        .hero-badge { position: absolute; bottom: 3rem; right: 3rem; z-index: 2; }
+        .hero-tag { position: absolute; top: 3rem; left: 2rem; z-index: 2; }
         @media (max-width: 768px) {
           .hero-grid { grid-template-columns: 1fr; min-height: auto; }
-          .hero-right { min-height: 320px; }
+          .hero-right { min-height: 380px; }
           .hero-badge { bottom: 1.5rem; right: 1.5rem; }
           .hero-tag { top: 1.5rem; left: 1.5rem; }
         }
@@ -80,32 +79,20 @@ export default function Hero() {
         </div>
 
         <div className="hero-right">
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem' }}>
-            <svg width="140" viewBox="0 0 120 280" fill="none" style={{ opacity: 0.82 }}>
-              <rect x="48" y="12" width="24" height="30" rx="4" fill="#3D2B1A" opacity="0.2"/>
-              <rect x="44" y="38" width="32" height="16" rx="2" fill="#4A5E3A" opacity="0.55"/>
-              <path d="M28 60 Q20 80 20 120 L20 230 Q20 250 60 250 Q100 250 100 230 L100 120 Q100 80 92 60 Z" fill="#3D2B1A" opacity="0.1"/>
-              <path d="M28 60 Q20 80 20 120 L20 230 Q20 250 60 250 Q100 250 100 230 L100 120 Q100 80 92 60 Z" fill="none" stroke="#3D2B1A" strokeWidth="1.5" opacity="0.35"/>
-              <path d="M24 130 Q24 124 26 122 L94 122 Q96 124 96 130 L96 228 Q96 244 60 244 Q24 244 24 228 Z" fill="#B8872A" opacity="0.22"/>
-              <rect x="30" y="140" width="60" height="72" rx="3" fill="#F7F3EC" opacity="0.88"/>
-              <rect x="34" y="146" width="52" height="60" rx="2" fill="none" stroke="#4A5E3A" strokeWidth="0.8" opacity="0.6"/>
-              <text x="60" y="165" textAnchor="middle" fontFamily="Georgia,serif" fontSize="6" fill="#3D2B1A" opacity="0.9">BIOS</text>
-              <text x="60" y="175" textAnchor="middle" fontFamily="Georgia,serif" fontSize="4.5" fill="#4A5E3A" opacity="0.85" fontStyle="italic">productos naturales</text>
-              <line x1="38" y1="181" x2="82" y2="181" stroke="#3D2B1A" strokeWidth="0.5" opacity="0.3"/>
-              <text x="60" y="190" textAnchor="middle" fontFamily="sans-serif" fontSize="3.8" fill="#3D2B1A" opacity="0.6" letterSpacing="0.8">VINAGRE DE SIDRA</text>
-              <text x="60" y="198" textAnchor="middle" fontFamily="sans-serif" fontSize="3.8" fill="#3D2B1A" opacity="0.6" letterSpacing="0.8">DE MANZANA</text>
-              <rect x="44" y="4" width="32" height="14" rx="3" fill="#4A5E3A" opacity="0.65"/>
-            </svg>
-            <p style={{ fontFamily: 'var(--font-serif)', fontSize: '0.85rem', color: 'var(--stone)', fontStyle: 'italic', letterSpacing: '0.06em' }}>
-              Producto estrella
-            </p>
-          </div>
+          <Image
+            src="/images/vinagre-hero.jpg"
+            alt="Vinagre de Sidra de Manzana BIOS Productos Naturales"
+            fill
+            style={{ objectFit: 'cover', objectPosition: 'center top' }}
+            priority
+          />
 
           <div className="hero-tag" style={{
-            background: 'var(--white)', padding: '0.7rem 1rem',
-            borderRadius: '4px', boxShadow: '0 4px 24px rgba(61,43,26,0.1)',
+            background: 'rgba(253,250,246,0.92)', padding: '0.7rem 1rem',
+            borderRadius: '4px', boxShadow: '0 4px 24px rgba(61,43,26,0.12)',
             fontSize: '0.7rem', color: 'var(--bark-mid)',
             display: 'flex', alignItems: 'center', gap: '0.6rem',
+            backdropFilter: 'blur(8px)',
           }}>
             <div style={{ width: '8px', height: '8px', background: 'var(--moss)', borderRadius: '50%', flexShrink: 0 }}></div>
             Sin conservadores · Sin químicos
