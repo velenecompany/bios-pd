@@ -17,32 +17,13 @@ export default function Hero() {
           overflow: hidden;
           min-height: 400px;
         }
-        .hero-badge {
-          position: absolute;
-          bottom: 3rem;
-          right: 3rem;
-        }
-        .hero-tag {
-          position: absolute;
-          top: 3rem;
-          left: 2rem;
-        }
+        .hero-badge { position: absolute; bottom: 3rem; right: 3rem; }
+        .hero-tag { position: absolute; top: 3rem; left: 2rem; }
         @media (max-width: 768px) {
-          .hero-grid {
-            grid-template-columns: 1fr;
-            min-height: auto;
-          }
-          .hero-right {
-            min-height: 320px;
-          }
-          .hero-badge {
-            bottom: 1.5rem;
-            right: 1.5rem;
-          }
-          .hero-tag {
-            top: 1.5rem;
-            left: 1.5rem;
-          }
+          .hero-grid { grid-template-columns: 1fr; min-height: auto; }
+          .hero-right { min-height: 320px; }
+          .hero-badge { bottom: 1.5rem; right: 1.5rem; }
+          .hero-tag { top: 1.5rem; left: 1.5rem; }
         }
       `}</style>
       <section className="hero-grid">
@@ -51,8 +32,7 @@ export default function Hero() {
           padding: 'clamp(3rem, 6vw, 6rem) clamp(1.5rem, 5vw, 5rem)',
         }}>
           <p style={{
-            fontFamily: 'var(--font-sans)',
-            fontSize: '0.72rem', fontWeight: 500,
+            fontFamily: 'var(--font-sans)', fontSize: '0.72rem', fontWeight: 500,
             letterSpacing: '0.22em', textTransform: 'uppercase',
             color: 'var(--moss)', marginBottom: '1.5rem',
             display: 'flex', alignItems: 'center', gap: '0.8rem',
@@ -69,14 +49,14 @@ export default function Hero() {
           }}>
             La pureza<br />
             de la <em style={{ fontStyle: 'italic', color: 'var(--moss)' }}>naturaleza</em><br />
-            en tu mesa.
+            en tu hogar.
           </h1>
 
           <p style={{
             fontSize: 'clamp(0.9rem, 2vw, 1rem)', fontWeight: 300, lineHeight: 1.8,
             color: 'var(--stone)', maxWidth: '400px', marginBottom: '2.5rem',
           }}>
-            Vinagre de manzana y aceite de coco elaborados con ingredientes seleccionados, sin aditivos ni conservadores.
+            Vinagre de sidra de manzana y aceite de coco con orégano elaborados artesanalmente. Sin químicos, sin conservadores.
           </p>
 
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
@@ -92,8 +72,7 @@ export default function Hero() {
             <a href="#beneficios" style={{
               color: 'var(--bark-mid)', fontSize: '0.78rem', fontWeight: 400,
               letterSpacing: '0.1em', textTransform: 'uppercase',
-              textDecoration: 'none', borderBottom: '1px solid var(--bark-mid)',
-              paddingBottom: '2px',
+              textDecoration: 'none', borderBottom: '1px solid var(--bark-mid)', paddingBottom: '2px',
             }}>
               Conocer beneficios
             </a>
@@ -110,11 +89,11 @@ export default function Hero() {
               <path d="M24 130 Q24 124 26 122 L94 122 Q96 124 96 130 L96 228 Q96 244 60 244 Q24 244 24 228 Z" fill="#B8872A" opacity="0.22"/>
               <rect x="30" y="140" width="60" height="72" rx="3" fill="#F7F3EC" opacity="0.88"/>
               <rect x="34" y="146" width="52" height="60" rx="2" fill="none" stroke="#4A5E3A" strokeWidth="0.8" opacity="0.6"/>
-              <text x="60" y="168" textAnchor="middle" fontFamily="Georgia,serif" fontSize="7" fill="#3D2B1A" opacity="0.9">BIOS</text>
-              <text x="60" y="180" textAnchor="middle" fontFamily="Georgia,serif" fontSize="5.5" fill="#4A5E3A" opacity="0.85" fontStyle="italic">naturales</text>
-              <line x1="38" y1="186" x2="82" y2="186" stroke="#3D2B1A" strokeWidth="0.5" opacity="0.3"/>
-              <text x="60" y="196" textAnchor="middle" fontFamily="sans-serif" fontSize="4.2" fill="#3D2B1A" opacity="0.6" letterSpacing="1">VINAGRE DE</text>
-              <text x="60" y="204" textAnchor="middle" fontFamily="sans-serif" fontSize="4.2" fill="#3D2B1A" opacity="0.6" letterSpacing="1">MANZANA</text>
+              <text x="60" y="165" textAnchor="middle" fontFamily="Georgia,serif" fontSize="6" fill="#3D2B1A" opacity="0.9">BIOS</text>
+              <text x="60" y="175" textAnchor="middle" fontFamily="Georgia,serif" fontSize="4.5" fill="#4A5E3A" opacity="0.85" fontStyle="italic">productos naturales</text>
+              <line x1="38" y1="181" x2="82" y2="181" stroke="#3D2B1A" strokeWidth="0.5" opacity="0.3"/>
+              <text x="60" y="190" textAnchor="middle" fontFamily="sans-serif" fontSize="3.8" fill="#3D2B1A" opacity="0.6" letterSpacing="0.8">VINAGRE DE SIDRA</text>
+              <text x="60" y="198" textAnchor="middle" fontFamily="sans-serif" fontSize="3.8" fill="#3D2B1A" opacity="0.6" letterSpacing="0.8">DE MANZANA</text>
               <rect x="44" y="4" width="32" height="14" rx="3" fill="#4A5E3A" opacity="0.65"/>
             </svg>
             <p style={{ fontFamily: 'var(--font-serif)', fontSize: '0.85rem', color: 'var(--stone)', fontStyle: 'italic', letterSpacing: '0.06em' }}>
@@ -129,7 +108,7 @@ export default function Hero() {
             display: 'flex', alignItems: 'center', gap: '0.6rem',
           }}>
             <div style={{ width: '8px', height: '8px', background: 'var(--moss)', borderRadius: '50%', flexShrink: 0 }}></div>
-            Sin conservadores · Sin colorantes
+            Sin conservadores · Sin químicos
           </div>
 
           <div className="hero-badge" style={{
