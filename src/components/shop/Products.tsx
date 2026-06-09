@@ -24,10 +24,10 @@ const products = [
   },
   {
     id: 3,
-    name: 'Kit Bienestar',
+    name: 'Esenciales BIOS',
     desc: 'Vinagre de Sidra de Manzana + Aceite de Coco con Orégano. La combinación natural perfecta.',
     prices: [
-      { label: 'Kit completo', menudeo: 'Desde $350', mayoreo: 'Precio especial' },
+      { label: 'Set completo', menudeo: 'Desde $350', mayoreo: 'Precio especial' },
     ],
     tag: 'Ahorra 15%',
     presentacion: 'Incluye 1 botella + 1 frasco',
@@ -84,7 +84,6 @@ export default function Products() {
               <div style={{ padding: '1.4rem 1.5rem 1.6rem' }}>
                 <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.15rem', fontWeight: 400, color: 'var(--bark)', marginBottom: '0.4rem' }}>{p.name}</p>
                 <p style={{ fontSize: '0.82rem', color: 'var(--stone)', lineHeight: 1.6, marginBottom: '1rem' }}>{p.desc}</p>
-
                 <div style={{ marginBottom: '1rem' }}>
                   <p style={{ fontSize: '0.65rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--moss)', marginBottom: '0.5rem' }}>Precios menudeo</p>
                   {p.prices.map(pr => (
@@ -94,14 +93,12 @@ export default function Products() {
                     </div>
                   ))}
                 </div>
-
                 <div style={{ background: 'rgba(74,94,58,0.06)', borderRadius: '3px', padding: '0.7rem 0.9rem', marginBottom: '1rem' }}>
                   <p style={{ fontSize: '0.65rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--moss)', marginBottom: '0.3rem' }}>Mayoreo (mín. 12 pz)</p>
                   {p.prices.map(pr => (
                     <p key={pr.label} style={{ fontSize: '0.8rem', color: 'var(--bark-mid)' }}>{pr.label}: <strong>{pr.mayoreo}</strong></p>
                   ))}
                 </div>
-
                 <button style={{ width: '100%', background: 'var(--bark)', color: 'var(--cream)', border: 'none', padding: '0.75rem', borderRadius: '2px', fontFamily: 'var(--font-sans)', fontSize: '0.72rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer' }}>
                   Pedir ahora
                 </button>
