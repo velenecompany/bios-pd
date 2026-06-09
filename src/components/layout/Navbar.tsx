@@ -10,21 +10,27 @@ export default function Navbar() {
       <nav style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        padding: '1.25rem 1.5rem',
+        padding: '1rem 2rem',
         background: 'rgba(247,243,236,0.93)',
         backdropFilter: 'blur(12px)',
         borderBottom: '1px solid rgba(61,43,26,0.08)',
+        width: '100%',
+        boxSizing: 'border-box',
       }}>
         <Link href="/" style={{
           fontFamily: 'var(--font-serif)',
-          fontSize: '1.2rem', fontWeight: 500,
-          letterSpacing: '0.08em', color: 'var(--bark)',
+          fontSize: 'clamp(0.95rem, 1.5vw, 1.2rem)',
+          fontWeight: 500,
+          letterSpacing: '0.06em',
+          color: 'var(--bark)',
           textDecoration: 'none',
+          flexShrink: 0,
+          whiteSpace: 'nowrap',
         }}>
           BIOS <span style={{ color: 'var(--moss)' }}>·</span> Productos Naturales
         </Link>
 
-        <ul style={{ display: 'flex', gap: '2.5rem', listStyle: 'none' }} className="desktop-nav">
+        <ul className="desktop-nav" style={{ display: 'flex', gap: '1.5rem', listStyle: 'none', margin: '0 1rem' }}>
           {[
             { label: 'Productos', href: '#productos' },
             { label: 'Beneficios', href: '#beneficios' },
@@ -34,9 +40,10 @@ export default function Navbar() {
             <li key={item.label}>
               <Link href={item.href} style={{
                 fontFamily: 'var(--font-sans)',
-                fontSize: '0.8rem', fontWeight: 400,
-                letterSpacing: '0.12em', textTransform: 'uppercase',
+                fontSize: '0.75rem', fontWeight: 400,
+                letterSpacing: '0.1em', textTransform: 'uppercase',
                 color: 'var(--bark-mid)', textDecoration: 'none',
+                whiteSpace: 'nowrap',
               }}>
                 {item.label}
               </Link>
@@ -45,10 +52,10 @@ export default function Navbar() {
           <li>
             <Link href="#productos" style={{
               background: 'var(--bark)', color: 'var(--cream)',
-              padding: '0.55rem 1.4rem', borderRadius: '2px',
-              fontSize: '0.8rem', fontWeight: 400,
-              letterSpacing: '0.12em', textTransform: 'uppercase',
-              textDecoration: 'none',
+              padding: '0.5rem 1.2rem', borderRadius: '2px',
+              fontSize: '0.75rem', fontWeight: 400,
+              letterSpacing: '0.1em', textTransform: 'uppercase',
+              textDecoration: 'none', whiteSpace: 'nowrap',
             }}>
               Comprar
             </Link>
@@ -58,7 +65,7 @@ export default function Navbar() {
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="mobile-menu-btn"
-          style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--bark)', padding: '0.2rem' }}
+          style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--bark)', padding: '0.2rem', flexShrink: 0 }}
         >
           {menuOpen ? (
             <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
@@ -73,8 +80,8 @@ export default function Navbar() {
       </nav>
 
       {menuOpen && (
-        <div className="mobile-menu" style={{
-          position: 'fixed', top: '64px', left: 0, right: 0, zIndex: 99,
+        <div style={{
+          position: 'fixed', top: '60px', left: 0, right: 0, zIndex: 99,
           background: 'var(--cream)',
           borderBottom: '1px solid rgba(61,43,26,0.08)',
           padding: '1.5rem',
@@ -112,11 +119,9 @@ export default function Navbar() {
       <style>{`
         .desktop-nav { display: flex !important; }
         .mobile-menu-btn { display: none !important; }
-        .mobile-menu { display: none !important; }
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
           .desktop-nav { display: none !important; }
           .mobile-menu-btn { display: block !important; }
-          .mobile-menu { display: flex !important; }
         }
       `}</style>
     </>
