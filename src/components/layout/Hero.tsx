@@ -19,9 +19,12 @@ export default function Hero() {
         }
         .hero-right {
           position: relative;
-          background: var(--cream-dark);
+          background: #ffffff;
           overflow: hidden;
           min-height: 500px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
         .hero-badge {
           position: absolute;
@@ -36,13 +39,8 @@ export default function Hero() {
           z-index: 2;
         }
         @media (max-width: 900px) {
-          .hero-grid {
-            grid-template-columns: 1fr;
-            min-height: auto;
-          }
-          .hero-right {
-            min-height: 400px;
-          }
+          .hero-grid { grid-template-columns: 1fr; min-height: auto; }
+          .hero-right { min-height: 420px; }
         }
       `}</style>
       <section className="hero-grid">
@@ -99,23 +97,24 @@ export default function Hero() {
           <Image
             src="/images/vinagre-hero.jpg"
             alt="Vinagre de Sidra de Manzana BIOS Productos Naturales"
-            fill
-            style={{ objectFit: 'cover', objectPosition: 'center 10%' }}
+            width={500}
+            height={700}
+            style={{ objectFit: 'contain', maxHeight: '85vh', width: 'auto' }}
             priority
           />
+
           <div className="hero-tag" style={{
-            background: 'rgba(253,250,246,0.92)', padding: '0.7rem 1rem',
-            borderRadius: '4px', boxShadow: '0 4px 24px rgba(61,43,26,0.12)',
+            background: 'rgba(247,243,236,0.95)', padding: '0.7rem 1rem',
+            borderRadius: '4px', boxShadow: '0 4px 24px rgba(61,43,26,0.1)',
             fontSize: '0.7rem', color: 'var(--bark-mid)',
             display: 'flex', alignItems: 'center', gap: '0.6rem',
-            backdropFilter: 'blur(8px)',
           }}>
             <div style={{ width: '8px', height: '8px', background: 'var(--moss)', borderRadius: '50%', flexShrink: 0 }}></div>
             Sin conservadores · Sin químicos
           </div>
 
           <div className="hero-badge" style={{
-            background: 'rgba(61,43,26,0.88)', color: 'var(--cream)',
+            background: 'var(--bark)', color: 'var(--cream)',
             width: '76px', height: '76px', borderRadius: '50%',
             display: 'flex', flexDirection: 'column',
             alignItems: 'center', justifyContent: 'center', textAlign: 'center',
