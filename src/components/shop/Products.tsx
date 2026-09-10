@@ -43,7 +43,8 @@ const products = [
     name: 'Esenciales BIOS',
     desc: 'Vinagre de Sidra de Manzana + Aceite de Coco con Orégano. La combinación natural perfecta.',
     prices: [
-      { label: 'Set completo', menudeo: 'Desde $350', mayoreo: 'Precio especial' },
+      { label: 'Vinagre ½L + Aceite de Coco', menudeo: '$238', mayoreo: 'Precio especial' },
+      { label: 'Vinagre 1L + Aceite de Coco', menudeo: '$340', mayoreo: 'Precio especial' },
     ],
     tag: 'Ahorra 15%',
     image: '/images/esenciales.jpg',
