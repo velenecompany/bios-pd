@@ -13,6 +13,7 @@ const products = [
     image: '/images/vinagre-hero.jpg',
     fit: 'contain' as const,
     position: 'center',
+    showMayoreo: true,
   },
   {
     id: 2,
@@ -25,6 +26,7 @@ const products = [
     image: '/images/vinagre-500ml.jpg',
     fit: 'contain' as const,
     position: 'center',
+    showMayoreo: true,
   },
   {
     id: 3,
@@ -37,19 +39,21 @@ const products = [
     image: '/images/aceite-coco.jpg',
     fit: 'contain' as const,
     position: 'center',
+    showMayoreo: true,
   },
   {
     id: 4,
     name: 'Esenciales BIOS',
     desc: 'Vinagre de Sidra de Manzana + Aceite de Coco con Orégano. La combinación natural perfecta.',
     prices: [
-      { label: 'Vinagre ½L + Aceite de Coco', menudeo: '$238', mayoreo: 'Precio especial' },
-      { label: 'Vinagre 1L + Aceite de Coco', menudeo: '$340', mayoreo: 'Precio especial' },
+      { label: 'Vinagre ½L + Aceite de Coco', menudeo: '$238', mayoreo: '' },
+      { label: 'Vinagre 1L + Aceite de Coco', menudeo: '$340', mayoreo: '' },
     ],
     tag: 'Ahorra 15%',
     image: '/images/esenciales.jpg',
     fit: 'cover' as const,
     position: 'center 30%',
+    showMayoreo: false,
   },
 ]
 
@@ -106,7 +110,7 @@ export default function Products() {
               <div style={{ padding: '1.2rem 1.3rem 1.5rem' }}>
                 <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.05rem', fontWeight: 400, color: 'var(--bark)', marginBottom: '0.4rem' }}>{p.name}</p>
                 <p style={{ fontSize: '0.8rem', color: 'var(--stone)', lineHeight: 1.6, marginBottom: '1rem' }}>{p.desc}</p>
-                <div style={{ marginBottom: '1rem' }}>
+                <div style={{ marginBottom: p.showMayoreo ? '1rem' : '1.5rem' }}>
                   <p style={{ fontSize: '0.62rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--moss)', marginBottom: '0.5rem' }}>Menudeo</p>
                   {p.prices.map(pr => (
                     <div key={pr.label} className="price-row">
@@ -115,12 +119,14 @@ export default function Products() {
                     </div>
                   ))}
                 </div>
-                <div style={{ background: 'rgba(74,94,58,0.06)', borderRadius: '3px', padding: '0.6rem 0.8rem', marginBottom: '1rem' }}>
-                  <p style={{ fontSize: '0.62rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--moss)', marginBottom: '0.3rem' }}>Mayoreo (mín. 12 pz)</p>
-                  {p.prices.map(pr => (
-                    <p key={pr.label} style={{ fontSize: '0.78rem', color: 'var(--bark-mid)' }}>{pr.label}: <strong>{pr.mayoreo}</strong></p>
-                  ))}
-                </div>
+                {p.showMayoreo && (
+                  <div style={{ background: 'rgba(74,94,58,0.06)', borderRadius: '3px', padding: '0.6rem 0.8rem', marginBottom: '1rem' }}>
+                    <p style={{ fontSize: '0.62rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--moss)', marginBottom: '0.3rem' }}>Mayoreo (mín. 12 pz)</p>
+                    {p.prices.map(pr => (
+                      <p key={pr.label} style={{ fontSize: '0.78rem', color: 'var(--bark-mid)' }}>{pr.label}: <strong>{pr.mayoreo}</strong></p>
+                    ))}
+                  </div>
+                )}
                 <button style={{ width: '100%', background: 'var(--bark)', color: 'var(--cream)', border: 'none', padding: '0.7rem', borderRadius: '2px', fontFamily: 'var(--font-sans)', fontSize: '0.7rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer' }}>
                   Pedir ahora
                 </button>
