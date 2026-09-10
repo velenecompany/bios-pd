@@ -60,7 +60,7 @@ export default function NuestraHistoria() {
 
           <div style={{ background: 'var(--cream)', borderLeft: '3px solid var(--moss)', padding: '2rem 2.5rem', marginBottom: '5rem', borderRadius: '0 4px 4px 0' }}>
             <p style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.3rem,2.5vw,1.8rem)', fontWeight: 300, fontStyle: 'italic', color: 'var(--bark)', lineHeight: 1.5 }}>
-              "No había fábrica, no había bodega — había una mujer decidida a convertir una idea en un producto real."
+              "No había fábrica, no había bodega — había una mujer decidida a convertir una idea en un producto real."ldquo;No había fábrica, no había bodega — había una mujer decidida a convertir una idea en un producto real."No había fábrica, no había bodega — había una mujer decidida a convertir una idea en un producto real."rdquo;
             </p>
           </div>
 
