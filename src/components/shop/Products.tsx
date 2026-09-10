@@ -4,18 +4,28 @@ import Image from 'next/image'
 const products = [
   {
     id: 1,
-    name: 'Vinagre de Sidra de Manzana',
+    name: 'Vinagre de Sidra de Manzana 1L',
     desc: 'Elaborado artesanalmente con manzanas seleccionadas y con la madre de vinagre. Sin químicos ni conservadores.',
     prices: [
       { label: 'Botella 1L', menudeo: '$200', mayoreo: '$135 c/u (min. 12 pz)' },
-      { label: 'Botella ½L', menudeo: '$150', mayoreo: '$80 c/u (min. 12 pz)' },
     ],
     tag: 'Producto estrella',
     presentacion: 'Botella de cristal · Tapa con seguro',
-    images: ['/images/vinagre-1litro.jpg', '/images/vinagre-500ml.jpg'],
+    image: '/images/vinagre-hero.jpg',
   },
   {
     id: 2,
+    name: 'Vinagre de Sidra de Manzana ½L',
+    desc: 'Elaborado artesanalmente con manzanas seleccionadas y con la madre de vinagre. Sin químicos ni conservadores.',
+    prices: [
+      { label: 'Botella ½L', menudeo: '$150', mayoreo: '$80 c/u (min. 12 pz)' },
+    ],
+    tag: null,
+    presentacion: 'Botella de cristal · Tapa con seguro',
+    image: '/images/vinagre-500ml.jpg',
+  },
+  {
+    id: 3,
     name: 'Aceite de Coco con Orégano',
     desc: 'Elaborado artesanalmente en pequeños lotes. Sin aditivos, sin conservadores, sin químicos.',
     prices: [
@@ -23,10 +33,10 @@ const products = [
     ],
     tag: null,
     presentacion: 'Frasco de cristal',
-    images: ['/images/aceite-coco.jpg'],
+    image: '/images/aceite-coco.jpg',
   },
   {
-    id: 3,
+    id: 4,
     name: 'Esenciales BIOS',
     desc: 'Vinagre de Sidra de Manzana + Aceite de Coco con Orégano. La combinación natural perfecta.',
     prices: [
@@ -34,7 +44,7 @@ const products = [
     ],
     tag: 'Ahorra 15%',
     presentacion: 'Incluye 1 botella + 1 frasco',
-    images: ['/images/vinagre-1litro.jpg'],
+    image: '/images/esenciales.jpg',
   },
 ]
 
@@ -44,29 +54,28 @@ export default function Products() {
       <style>{`
         .products-grid {
           display: grid;
-          grid-template-columns: 1.5fr 1fr 1fr;
+          grid-template-columns: repeat(4, 1fr);
           gap: 1.5rem;
         }
-        .product-img-featured { height: 380px; }
-        .product-img-normal { height: 300px; }
+        .product-img { height: 300px; }
         .price-row { display: flex; justify-content: space-between; align-items: center; padding: 0.4rem 0; border-bottom: 1px solid var(--cream-dark); }
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
+          .products-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
           .products-grid { grid-template-columns: 1fr; }
-          .product-img-featured { height: 280px; }
-          .product-img-normal { height: 240px; }
+          .product-img { height: 240px; }
         }
       `}</style>
       <section id="productos" style={{ background: 'var(--white)', padding: 'clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 5rem)' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3rem', flexWrap: 'wrap', gap: '1rem' }}>
-          <div>
-            <p style={{ fontSize: '0.7rem', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--moss)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.7rem' }}>
-              <span style={{ display: 'block', width: '22px', height: '1px', background: 'var(--moss)' }}></span>
-              Nuestros productos
-            </p>
-            <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2rem, 4vw, 3.8rem)', fontWeight: 300, lineHeight: 1.15, color: 'var(--bark)' }}>
-              Del campo<br />a tu <em style={{ fontStyle: 'italic', color: 'var(--moss)' }}>hogar.</em>
-            </h2>
-          </div>
+        <div style={{ marginBottom: '3rem' }}>
+          <p style={{ fontSize: '0.7rem', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--moss)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.7rem' }}>
+            <span style={{ display: 'block', width: '22px', height: '1px', background: 'var(--moss)' }}></span>
+            Nuestros productos
+          </p>
+          <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2rem, 4vw, 3.8rem)', fontWeight: 300, lineHeight: 1.15, color: 'var(--bark)' }}>
+            Del campo<br />a tu <em style={{ fontStyle: 'italic', color: 'var(--moss)' }}>hogar.</em>
+          </h2>
         </div>
 
         <div className="products-grid">
@@ -75,47 +84,39 @@ export default function Products() {
               style={{ background: 'var(--cream)', borderRadius: '4px', overflow: 'hidden', cursor: 'pointer', transition: 'transform 0.25s' }}
               onMouseEnter={e => (e.currentTarget.style.transform = 'translateY(-4px)')}
               onMouseLeave={e => (e.currentTarget.style.transform = 'translateY(0)')}>
-              <div className={p.id === 1 ? 'product-img-featured' : 'product-img-normal'}
-                style={{ background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', gap: '0.5rem' }}>
+              <div className="product-img"
+                style={{ background: '#fff', position: 'relative' }}>
                 {p.tag && (
                   <span style={{ position: 'absolute', top: '1rem', left: '1rem', background: 'var(--moss)', color: 'var(--white)', fontSize: '0.62rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', padding: '0.3rem 0.75rem', borderRadius: '2px', zIndex: 1 }}>
                     {p.tag}
                   </span>
                 )}
-                {p.images.length === 2 ? (
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', width: '100%', height: '100%', padding: '1rem' }}>
-                    <div style={{ position: 'relative', flex: 1, height: '100%' }}>
-                      <Image src={p.images[0]} alt={p.name} fill style={{ objectFit: 'contain' }} />
-                    </div>
-                    <div style={{ position: 'relative', flex: 1, height: '100%' }}>
-                      <Image src={p.images[1]} alt={p.name} fill style={{ objectFit: 'contain' }} />
-                    </div>
-                  </div>
-                ) : (
-                  <div style={{ position: 'relative', width: '100%', height: '100%', padding: '1rem' }}>
-                    <Image src={p.images[0]} alt={p.name} fill style={{ objectFit: 'contain' }} />
-                  </div>
-                )}
+                <Image
+                  src={p.image}
+                  alt={p.name}
+                  fill
+                  style={{ objectFit: 'contain', padding: '1rem' }}
+                />
               </div>
-              <div style={{ padding: '1.4rem 1.5rem 1.6rem' }}>
-                <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.15rem', fontWeight: 400, color: 'var(--bark)', marginBottom: '0.4rem' }}>{p.name}</p>
-                <p style={{ fontSize: '0.82rem', color: 'var(--stone)', lineHeight: 1.6, marginBottom: '1rem' }}>{p.desc}</p>
+              <div style={{ padding: '1.2rem 1.3rem 1.5rem' }}>
+                <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.05rem', fontWeight: 400, color: 'var(--bark)', marginBottom: '0.4rem' }}>{p.name}</p>
+                <p style={{ fontSize: '0.8rem', color: 'var(--stone)', lineHeight: 1.6, marginBottom: '1rem' }}>{p.desc}</p>
                 <div style={{ marginBottom: '1rem' }}>
-                  <p style={{ fontSize: '0.65rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--moss)', marginBottom: '0.5rem' }}>Precios menudeo</p>
+                  <p style={{ fontSize: '0.62rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--moss)', marginBottom: '0.5rem' }}>Menudeo</p>
                   {p.prices.map(pr => (
                     <div key={pr.label} className="price-row">
-                      <span style={{ fontSize: '0.8rem', color: 'var(--bark-mid)' }}>{pr.label}</span>
-                      <span style={{ fontFamily: 'var(--font-serif)', fontSize: '1.1rem', fontWeight: 300, color: 'var(--bark)' }}>{pr.menudeo}</span>
+                      <span style={{ fontSize: '0.78rem', color: 'var(--bark-mid)' }}>{pr.label}</span>
+                      <span style={{ fontFamily: 'var(--font-serif)', fontSize: '1.05rem', fontWeight: 300, color: 'var(--bark)' }}>{pr.menudeo}</span>
                     </div>
                   ))}
                 </div>
-                <div style={{ background: 'rgba(74,94,58,0.06)', borderRadius: '3px', padding: '0.7rem 0.9rem', marginBottom: '1rem' }}>
-                  <p style={{ fontSize: '0.65rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--moss)', marginBottom: '0.3rem' }}>Mayoreo (mín. 12 pz)</p>
+                <div style={{ background: 'rgba(74,94,58,0.06)', borderRadius: '3px', padding: '0.6rem 0.8rem', marginBottom: '1rem' }}>
+                  <p style={{ fontSize: '0.62rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--moss)', marginBottom: '0.3rem' }}>Mayoreo (mín. 12 pz)</p>
                   {p.prices.map(pr => (
-                    <p key={pr.label} style={{ fontSize: '0.8rem', color: 'var(--bark-mid)' }}>{pr.label}: <strong>{pr.mayoreo}</strong></p>
+                    <p key={pr.label} style={{ fontSize: '0.78rem', color: 'var(--bark-mid)' }}>{pr.label}: <strong>{pr.mayoreo}</strong></p>
                   ))}
                 </div>
-                <button style={{ width: '100%', background: 'var(--bark)', color: 'var(--cream)', border: 'none', padding: '0.75rem', borderRadius: '2px', fontFamily: 'var(--font-sans)', fontSize: '0.72rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer' }}>
+                <button style={{ width: '100%', background: 'var(--bark)', color: 'var(--cream)', border: 'none', padding: '0.7rem', borderRadius: '2px', fontFamily: 'var(--font-sans)', fontSize: '0.7rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer' }}>
                   Pedir ahora
                 </button>
               </div>
