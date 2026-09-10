@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image'
 
 const products = [
   {
@@ -11,6 +12,7 @@ const products = [
     ],
     tag: 'Producto estrella',
     presentacion: 'Botella de cristal · Tapa con seguro',
+    images: ['/images/vinagre-1litro.jpg', '/images/vinagre-500ml.jpg'],
   },
   {
     id: 2,
@@ -21,6 +23,7 @@ const products = [
     ],
     tag: null,
     presentacion: 'Frasco de cristal',
+    images: ['/images/aceite-coco.jpg'],
   },
   {
     id: 3,
@@ -31,6 +34,7 @@ const products = [
     ],
     tag: 'Ahorra 15%',
     presentacion: 'Incluye 1 botella + 1 frasco',
+    images: ['/images/vinagre-1litro.jpg'],
   },
 ]
 
@@ -43,13 +47,13 @@ export default function Products() {
           grid-template-columns: 1.5fr 1fr 1fr;
           gap: 1.5rem;
         }
-        .product-img-featured { height: 340px; }
-        .product-img-normal { height: 280px; }
+        .product-img-featured { height: 380px; }
+        .product-img-normal { height: 300px; }
         .price-row { display: flex; justify-content: space-between; align-items: center; padding: 0.4rem 0; border-bottom: 1px solid var(--cream-dark); }
         @media (max-width: 768px) {
           .products-grid { grid-template-columns: 1fr; }
-          .product-img-featured { height: 220px; }
-          .product-img-normal { height: 200px; }
+          .product-img-featured { height: 280px; }
+          .product-img-normal { height: 240px; }
         }
       `}</style>
       <section id="productos" style={{ background: 'var(--white)', padding: 'clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 5rem)' }}>
@@ -72,14 +76,26 @@ export default function Products() {
               onMouseEnter={e => (e.currentTarget.style.transform = 'translateY(-4px)')}
               onMouseLeave={e => (e.currentTarget.style.transform = 'translateY(0)')}>
               <div className={p.id === 1 ? 'product-img-featured' : 'product-img-normal'}
-                style={{ background: 'var(--cream-dark)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', flexDirection: 'column', gap: '0.5rem' }}>
+                style={{ background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', gap: '0.5rem' }}>
                 {p.tag && (
-                  <span style={{ position: 'absolute', top: '1rem', left: '1rem', background: 'var(--moss)', color: 'var(--white)', fontSize: '0.62rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', padding: '0.3rem 0.75rem', borderRadius: '2px' }}>
+                  <span style={{ position: 'absolute', top: '1rem', left: '1rem', background: 'var(--moss)', color: 'var(--white)', fontSize: '0.62rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', padding: '0.3rem 0.75rem', borderRadius: '2px', zIndex: 1 }}>
                     {p.tag}
                   </span>
                 )}
-                <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.2rem', fontWeight: 300, color: 'var(--bark-mid)', fontStyle: 'italic', opacity: 0.5, textAlign: 'center', padding: '0 1rem' }}>{p.name}</p>
-                <p style={{ fontSize: '0.65rem', color: 'var(--stone)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{p.presentacion}</p>
+                {p.images.length === 2 ? (
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', width: '100%', height: '100%', padding: '1rem' }}>
+                    <div style={{ position: 'relative', flex: 1, height: '100%' }}>
+                      <Image src={p.images[0]} alt={p.name} fill style={{ objectFit: 'contain' }} />
+                    </div>
+                    <div style={{ position: 'relative', flex: 1, height: '100%' }}>
+                      <Image src={p.images[1]} alt={p.name} fill style={{ objectFit: 'contain' }} />
+                    </div>
+                  </div>
+                ) : (
+                  <div style={{ position: 'relative', width: '100%', height: '100%', padding: '1rem' }}>
+                    <Image src={p.images[0]} alt={p.name} fill style={{ objectFit: 'contain' }} />
+                  </div>
+                )}
               </div>
               <div style={{ padding: '1.4rem 1.5rem 1.6rem' }}>
                 <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.15rem', fontWeight: 400, color: 'var(--bark)', marginBottom: '0.4rem' }}>{p.name}</p>
