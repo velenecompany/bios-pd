@@ -1,5 +1,4 @@
 'use client'
-import { CartItem } from '@/types/cart'
 import Image from 'next/image'
 
 const products = [
