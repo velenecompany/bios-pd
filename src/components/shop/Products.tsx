@@ -12,6 +12,7 @@ const products = [
     tag: 'Producto estrella',
     presentacion: 'Botella de cristal · Tapa con seguro',
     image: '/images/vinagre-hero.jpg',
+    fit: 'contain' as const,
   },
   {
     id: 2,
@@ -23,6 +24,7 @@ const products = [
     tag: null,
     presentacion: 'Botella de cristal · Tapa con seguro',
     image: '/images/vinagre-500ml.jpg',
+    fit: 'contain' as const,
   },
   {
     id: 3,
@@ -34,6 +36,7 @@ const products = [
     tag: null,
     presentacion: 'Frasco de cristal',
     image: '/images/aceite-coco.jpg',
+    fit: 'contain' as const,
   },
   {
     id: 4,
@@ -45,6 +48,7 @@ const products = [
     tag: 'Ahorra 15%',
     presentacion: 'Incluye 1 botella + 1 frasco',
     image: '/images/esenciales.jpg',
+    fit: 'cover' as const,
   },
 ]
 
@@ -85,7 +89,7 @@ export default function Products() {
               onMouseEnter={e => (e.currentTarget.style.transform = 'translateY(-4px)')}
               onMouseLeave={e => (e.currentTarget.style.transform = 'translateY(0)')}>
               <div className="product-img"
-                style={{ background: '#fff', position: 'relative' }}>
+                style={{ background: p.fit === 'cover' ? 'var(--cream-dark)' : '#fff', position: 'relative' }}>
                 {p.tag && (
                   <span style={{ position: 'absolute', top: '1rem', left: '1rem', background: 'var(--moss)', color: 'var(--white)', fontSize: '0.62rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', padding: '0.3rem 0.75rem', borderRadius: '2px', zIndex: 1 }}>
                     {p.tag}
@@ -95,7 +99,7 @@ export default function Products() {
                   src={p.image}
                   alt={p.name}
                   fill
-                  style={{ objectFit: 'contain', padding: '1rem' }}
+                  style={{ objectFit: p.fit, padding: p.fit === 'contain' ? '1rem' : '0' }}
                 />
               </div>
               <div style={{ padding: '1.2rem 1.3rem 1.5rem' }}>
