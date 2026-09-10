@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Image from 'next/image'
-import { CartItem } from './Products'
+import { CartItem } from '@/types/cart'
 
 interface CartProps {
   items: CartItem[]

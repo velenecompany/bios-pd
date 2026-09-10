@@ -10,7 +10,7 @@ import DistribuidoresPreview from '@/components/layout/DistribuidoresPreview'
 import Registro from '@/components/layout/Registro'
 import Footer from '@/components/layout/Footer'
 import ChatWidget from '@/components/chat/ChatWidget'
-import { CartItem } from '@/components/shop/Products'
+import { CartItem } from '@/types/cart'
 
 export default function Home() {
   const [cartItems, setCartItems] = useState<CartItem[]>([])
