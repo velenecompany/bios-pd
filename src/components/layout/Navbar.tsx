@@ -34,8 +34,8 @@ export default function Navbar() {
           {[
             { label: 'Productos', href: '#productos' },
             { label: 'Beneficios', href: '#beneficios' },
+            { label: 'Nuestra historia', href: '/nuestra-historia' },
             { label: 'Distribuidores', href: '/distribuidores' },
-            { label: 'Mi cuenta', href: '#registro' },
           ].map(item => (
             <li key={item.label}>
               <Link href={item.href} style={{
@@ -90,6 +90,7 @@ export default function Navbar() {
           {[
             { label: 'Productos', href: '#productos' },
             { label: 'Beneficios', href: '#beneficios' },
+            { label: 'Nuestra historia', href: '/nuestra-historia' },
             { label: 'Distribuidores', href: '/distribuidores' },
             { label: 'Mi cuenta', href: '#registro' },
           ].map(item => (
