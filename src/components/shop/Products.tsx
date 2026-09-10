@@ -10,9 +10,9 @@ const products = [
       { label: 'Botella 1L', menudeo: '$200', mayoreo: '$135 c/u (min. 12 pz)' },
     ],
     tag: 'Producto estrella',
-    presentacion: 'Botella de cristal · Tapa con seguro',
     image: '/images/vinagre-hero.jpg',
     fit: 'contain' as const,
+    position: 'center',
   },
   {
     id: 2,
@@ -22,9 +22,9 @@ const products = [
       { label: 'Botella ½L', menudeo: '$150', mayoreo: '$80 c/u (min. 12 pz)' },
     ],
     tag: null,
-    presentacion: 'Botella de cristal · Tapa con seguro',
     image: '/images/vinagre-500ml.jpg',
     fit: 'contain' as const,
+    position: 'center',
   },
   {
     id: 3,
@@ -34,9 +34,9 @@ const products = [
       { label: 'Frasco 250ml', menudeo: '$200', mayoreo: '$120 c/u (min. 12 pz)' },
     ],
     tag: null,
-    presentacion: 'Frasco de cristal',
     image: '/images/aceite-coco.jpg',
     fit: 'contain' as const,
+    position: 'center',
   },
   {
     id: 4,
@@ -46,9 +46,9 @@ const products = [
       { label: 'Set completo', menudeo: 'Desde $350', mayoreo: 'Precio especial' },
     ],
     tag: 'Ahorra 15%',
-    presentacion: 'Incluye 1 botella + 1 frasco',
     image: '/images/esenciales.jpg',
     fit: 'cover' as const,
+    position: 'center 30%',
   },
 ]
 
@@ -68,7 +68,7 @@ export default function Products() {
         }
         @media (max-width: 600px) {
           .products-grid { grid-template-columns: 1fr; }
-          .product-img { height: 240px; }
+          .product-img { height: 300px; }
         }
       `}</style>
       <section id="productos" style={{ background: 'var(--white)', padding: 'clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 5rem)' }}>
@@ -99,7 +99,7 @@ export default function Products() {
                   src={p.image}
                   alt={p.name}
                   fill
-                  style={{ objectFit: p.fit, padding: p.fit === 'contain' ? '1rem' : '0' }}
+                  style={{ objectFit: p.fit, objectPosition: p.position, padding: p.fit === 'contain' ? '1rem' : '0' }}
                 />
               </div>
               <div style={{ padding: '1.2rem 1.3rem 1.5rem' }}>
