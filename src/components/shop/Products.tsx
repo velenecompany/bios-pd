@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image'
+import { CartItem } from '@/types/cart'
 
 const products = [
   {
@@ -57,13 +58,9 @@ const products = [
   },
 ]
 
-import { CartItem } from "@/types/cart"
-
-interface ProductsProps { onAddToCart: (item: CartItem) => void }
-
-export default function Products({ onAddToCart }: ProductsProps) {
-
-interface ProductsProps { onAddToCart: (item: CartItem) => void }
+interface ProductsProps {
+  onAddToCart: (item: CartItem) => void
+}
 
 export default function Products({ onAddToCart }: ProductsProps) {
   return (
@@ -76,13 +73,8 @@ export default function Products({ onAddToCart }: ProductsProps) {
         }
         .product-img { height: 300px; }
         .price-row { display: flex; justify-content: space-between; align-items: center; padding: 0.4rem 0; border-bottom: 1px solid var(--cream-dark); }
-        @media (max-width: 1024px) {
-          .products-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 600px) {
-          .products-grid { grid-template-columns: 1fr; }
-          .product-img { height: 300px; }
-        }
+        @media (max-width: 1024px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .products-grid { grid-template-columns: 1fr; } .product-img { height: 300px; } }
       `}</style>
       <section id="productos" style={{ background: 'var(--white)', padding: 'clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 5rem)' }}>
         <div style={{ marginBottom: '3rem' }}>
@@ -93,6 +85,9 @@ export default function Products({ onAddToCart }: ProductsProps) {
           <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2rem, 4vw, 3.8rem)', fontWeight: 300, lineHeight: 1.15, color: 'var(--bark)' }}>
             Del campo<br />a tu <em style={{ fontStyle: 'italic', color: 'var(--moss)' }}>hogar.</em>
           </h2>
+          <p style={{ fontSize: '0.82rem', color: 'var(--stone)', marginTop: '0.8rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+            🚚 Envío a toda la República Mexicana · El costo varía según tu código postal
+          </p>
         </div>
 
         <div className="products-grid">
@@ -101,24 +96,18 @@ export default function Products({ onAddToCart }: ProductsProps) {
               style={{ background: 'var(--cream)', borderRadius: '4px', overflow: 'hidden', cursor: 'pointer', transition: 'transform 0.25s' }}
               onMouseEnter={e => (e.currentTarget.style.transform = 'translateY(-4px)')}
               onMouseLeave={e => (e.currentTarget.style.transform = 'translateY(0)')}>
-              <div className="product-img"
-                style={{ background: p.fit === 'cover' ? 'var(--cream-dark)' : '#fff', position: 'relative' }}>
+              <div className="product-img" style={{ background: p.fit === 'cover' ? 'var(--cream-dark)' : '#fff', position: 'relative' }}>
                 {p.tag && (
                   <span style={{ position: 'absolute', top: '1rem', left: '1rem', background: 'var(--moss)', color: 'var(--white)', fontSize: '0.62rem', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', padding: '0.3rem 0.75rem', borderRadius: '2px', zIndex: 1 }}>
                     {p.tag}
                   </span>
                 )}
-                <Image
-                  src={p.image}
-                  alt={p.name}
-                  fill
-                  style={{ objectFit: p.fit, objectPosition: p.position, padding: p.fit === 'contain' ? '1rem' : '0' }}
-                />
+                <Image src={p.image} alt={p.name} fill style={{ objectFit: p.fit, objectPosition: p.position, padding: p.fit === 'contain' ? '1rem' : '0' }} />
               </div>
               <div style={{ padding: '1.2rem 1.3rem 1.5rem' }}>
                 <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.05rem', fontWeight: 400, color: 'var(--bark)', marginBottom: '0.4rem' }}>{p.name}</p>
                 <p style={{ fontSize: '0.8rem', color: 'var(--stone)', lineHeight: 1.6, marginBottom: '1rem' }}>{p.desc}</p>
-                <div style={{ marginBottom: p.showMayoreo ? '1rem' : '1.5rem' }}>
+                <div style={{ marginBottom: '0.5rem' }}>
                   <p style={{ fontSize: '0.62rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--moss)', marginBottom: '0.5rem' }}>Menudeo</p>
                   {p.prices.map(pr => (
                     <div key={pr.label} className="price-row">
@@ -127,6 +116,7 @@ export default function Products({ onAddToCart }: ProductsProps) {
                     </div>
                   ))}
                 </div>
+                <p style={{ fontSize: '0.7rem', color: 'var(--stone)', marginBottom: '1rem' }}>+ envío según código postal</p>
                 {p.showMayoreo && (
                   <div style={{ background: 'rgba(74,94,58,0.06)', borderRadius: '3px', padding: '0.6rem 0.8rem', marginBottom: '1rem' }}>
                     <p style={{ fontSize: '0.62rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--moss)', marginBottom: '0.3rem' }}>Mayoreo (mín. 12 pz)</p>
@@ -135,8 +125,16 @@ export default function Products({ onAddToCart }: ProductsProps) {
                     ))}
                   </div>
                 )}
-                <button style={{ width: '100%', background: 'var(--bark)', color: 'var(--cream)', border: 'none', padding: '0.7rem', borderRadius: '2px', fontFamily: 'var(--font-sans)', fontSize: '0.7rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer' }}>
-                  Pedir ahora
+                <button
+                  onClick={() => onAddToCart({
+                    id: p.id,
+                    name: p.name,
+                    price: parseInt(p.prices[0].menudeo.replace('$', '').replace(',', '')),
+                    qty: 1,
+                    image: p.image,
+                  })}
+                  style={{ width: '100%', background: 'var(--bark)', color: 'var(--cream)', border: 'none', padding: '0.7rem', borderRadius: '2px', fontFamily: 'var(--font-sans)', fontSize: '0.7rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer' }}>
+                  + Añadir al carrito
                 </button>
               </div>
             </div>
