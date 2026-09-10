@@ -57,7 +57,11 @@ const products = [
   },
 ]
 
-export default function Products() {
+import { CartItem } from "@/types/cart"
+
+interface ProductsProps { onAddToCart: (item: CartItem) => void }
+
+export default function Products({ onAddToCart }: ProductsProps) {
   return (
     <>
       <style>{`
